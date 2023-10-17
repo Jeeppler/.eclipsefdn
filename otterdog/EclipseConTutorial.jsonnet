@@ -62,7 +62,7 @@ orgs.newOrg('EclipseConTutorial') {
       template_repository: "EclipseConTutorial/test-repo-template",
       web_commit_signoff_required: false,
       workflows+: {
-        default_workflow_permissions: "write",
+        default_workflow_permissions: "read",
       },
       branch_protection_rules: [
          orgs.newBranchProtectionRule('main') {
@@ -161,6 +161,13 @@ orgs.newOrg('EclipseConTutorial') {
       workflows+: {
         default_workflow_permissions: "write",
       },
+      branch_protection_rules: [
+         orgs.newBranchProtectionRule('main') {
+               # lets set the required number of approvals to 0 to make changes later
+               # on easier for the purpose of this tutorial
+               required_approving_review_count: 0
+         }
+      ],
     },
     orgs.newRepo('test-repo-theta') {
       allow_merge_commit: true,
@@ -177,6 +184,13 @@ orgs.newOrg('EclipseConTutorial') {
       workflows+: {
         default_workflow_permissions: "write",
       },
+      branch_protection_rules: [
+         orgs.newBranchProtectionRule('main') {
+               # lets set the required number of approvals to 0 to make changes later
+               # on easier for the purpose of this tutorial
+               required_approving_review_count: 0
+         }
+      ],
     },
     orgs.newRepo('test-repo-iota') {
       allow_merge_commit: true,
