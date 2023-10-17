@@ -129,17 +129,24 @@ orgs.newOrg('EclipseConTutorial') {
       allow_merge_commit: true,
       allow_update_branch: false,
       delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
+      dependabot_alerts_enabled: true,
       has_wiki: false,
       has_projects: false,
       is_template: true,
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
+      secret_scanning: "enabled",
+      secret_scanning_push_protection: "enabled",
       template_repository: "EclipseConTutorial/test-repo-template",
       web_commit_signoff_required: false,
       workflows+: {
-        default_workflow_permissions: "write",
+        default_workflow_permissions: "read",
       },
+      branch_protection_rules: [
+         orgs.newBranchProtectionRule('main') {
+               # lets set the required number of approvals to 0 to make changes later
+               # on easier for the purpose of this tutorial
+               required_approving_review_count: 0
+         }
+      ],
     },
     orgs.newRepo('test-repo-zeta') {
       allow_merge_commit: false,
